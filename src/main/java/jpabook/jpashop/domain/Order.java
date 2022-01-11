@@ -26,12 +26,15 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
     // 주문시간
     private LocalDateTime orderDate;
 
 
-    // 주문상태: Order, Cancled
+    // 주문상태: ORDER, CANCEL
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 }
