@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 // 부모 클래스에 상속관계 전략을 잡아주어야 함. : Single table
@@ -22,5 +24,6 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
-
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<>();
 }
